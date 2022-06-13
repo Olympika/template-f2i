@@ -1,0 +1,1 @@
+var marker = L.marker([48.825, 3.08]).addTo(map);
