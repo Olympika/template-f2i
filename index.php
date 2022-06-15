@@ -27,7 +27,7 @@
                 </div>
                 <div class="form-group col-md-4">
                     <label for="input_telephone">Telephone</label>
-                    <input type="tel" class="form-control" name="phone" id="input_telephone" placeholder="Votre telephone" required>
+                    <input type="tel" class="form-control" name="phone" pattern="[0-9]{10}" id="input_telephone" placeholder="Votre telephone" required>
                 </div>
                 <div class="form-group col-md-4">
                     <label for="input_naissance">Date</label>
