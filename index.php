@@ -45,6 +45,7 @@
             </div>
             
             <div class="input-field col s12">
+            <a href="login.php" class="cold-md-3"> Connectez-vous à votre compte </a>
             <button class="btn waves-effect waves-light pulse" type="submit" name="action">Valider
             </button>
             </div>

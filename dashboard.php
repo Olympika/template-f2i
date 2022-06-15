@@ -2,12 +2,13 @@
 
 require_once 'Database.php';
 
-$nom = htmlspecialchars ($_POST['nom']);
-$prenom = htmlspecialchars ($_POST["prenom"]);
-$email = htmlspecialchars  ($_POST["email"]);
-$phone = htmlspecialchars ($_POST["phone"]);
-$mdp1 = htmlspecialchars ($_POST["mdp1"]);
-$mdp2 = htmlspecialchars ($_POST["mdp2"]);
+$nom = htmlspecialchars($_POST["nom"]);
+$prenom = htmlspecialchars($_POST["prenom"]);
+$email = htmlspecialchars($_POST["email"]);
+$date = htmlspecialchars($_POST ["date"]);
+$phone = htmlspecialchars($_POST["phone"]);
+$mdp1 = htmlspecialchars($_POST["mdp1"]);
+$mdp2 = htmlspecialchars($_POST["mdp2"]);
 
 if (strlen($nom) == 0 || strlen($nom) > 255 OR empty($nom)) {
     echo "erreur nom";
@@ -19,18 +20,18 @@ if (strlen($prenom) == 0 || strlen($prenom) > 255 OR empty($nom)) {
     die ();
 }
 
+if (empty($date) || strlen($date) > 20) {
+    echo "La date est invalide";
+    die ();
+}
+
 if (!filter_var($email, FILTER_VALIDATE_EMAIL) || strlen($email) > 100) {
-    echo "L'adresse mail ".$email." est incorrecte";
+    echo "L'adresse mail est incorrecte";
     die ();
 }
 
 if (strlen($phone) == 0 || strlen($phone) > 18 OR empty($phone)) {
     echo "le numéro de téléphone est invalide";
-    die ();
-}
-
-if (empty($date) || strlen($date) > 20) {
-    echo "La date est invalide";
     die ();
 }
 
@@ -46,9 +47,9 @@ if ($rechercheEmail == false) {
     die ();
 }
 
-$email = $rechercheEmail->fetchAll();
+$emailTest = $rechercheEmail->fetchAll();
 
-if (count($email) > 0) {
+if (count($emailTest) > 0) {
     echo "L'utilisateur est déjà inscrit";
     die ();
 }
@@ -58,8 +59,8 @@ $newPassword = password_hash($mdp1, PASSWORD_ARGON2I);
 $insert = Database::Insert ('user',[
 $nom,
 $prenom,
-$email,
 $date,
+$email,
 $phone,
 $newPassword,
 ]); 
@@ -69,4 +70,4 @@ if ($insert == false) {
     die ();
 }
 
-header ('Location: https://localhost/index.php');
+header ('Location: http://localhost/index.php');

@@ -53,24 +53,20 @@ class Database {
       if ($table == null) {
         return false;
       }
-      
-      $sql = 'INSERT FROM '.$table;
-      
-        if ($table != null && $data != null) {
-          $sth = $db->prepare($sql);
-          $sth->execute($data);
-          return $sth;
-        } else {
-          return false;
-        }
 
-
-       // preparer sql 
-      $stmt = $conn->prepare("INSERT INTO ".$table." (lastname, firstname, email, date, phone, password) VALUES (?,?,?,?,?,?)");
-        $stmt->execute($data);
-   
-    
-      echo "Créé avec succès";
+      var_dump(
+        $data
+      );
+      
+      $sql = "INSERT INTO ".$table ." (lastname, firstname, date, email, phone, password) VALUES (?, ?, ?, ?, ?, ?)"; 
+      
+      if ($table != null && $data != null) {
+        $sth = $db->prepare($sql);
+        $sth->execute($data);
+        return $sth; 
+      } else {
+        return false;
+      }
 
     } catch(PDOException $e) {
       echo "Error: " . $e->getMessage();
