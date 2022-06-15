@@ -55,13 +55,13 @@ if (count($email) > 0) {
 
 $newPassword = password_hash($mdp1, PASSWORD_ARGON2I);
 
-$insert = Database::Insert ('user'[
-$nom;
-$prenom;
-$email;
-$date;
-$phone;
-$newPassword;
+$insert = Database::Insert ('user',[
+$nom,
+$prenom,
+$email,
+$date,
+$phone,
+$newPassword,
 ]); 
 
 if ($insert == false) {
