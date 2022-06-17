@@ -1,6 +1,6 @@
 <?php
 session_start();
-if(!$_SESSION['user']) {
+if(!$_SESSION['evaluation']) {
 header("Location: login.php");
 }
 ?>
@@ -15,12 +15,12 @@ header("Location: login.php");
 <body>
     
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <a class="navbar-brand" href="#"><?= $_SESSION['user'][0]['email'] ?></a>
+  <a class="navbar-brand" href="#"><?= $_SESSION['evaluation'][0]['username'] ?></a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
 
-  <a href="/stop.php" class="btn btn-danger offset-md-8">Je veux me déconnecter</a>
+  <a href="/stop.php" class="btn btn-danger offset-md-9">Je veux me déconnecter</a>
 </nav>
 
 </body>
