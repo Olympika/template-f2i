@@ -11,10 +11,14 @@ if (strlen($username) == 0 || strlen($username) > 255 OR empty($username)) {
     die ();
 }
 
+//si les deux mots de passe ne correspondent pas, alors un popup s'affiche et une redirection s'en suit//
 if (strlen($mdp1) < 8 || $mdp1 != $mdp2 || strlen($mdp1) > 255) {
-    echo "Les mots de passe sont invalides";
-    die ();
-}
+    echo "<script>
+    window.location.href = 'http://localhost/evaluation.php';
+    alert('Les mots de passe sont invalides');
+    </script>";
+    die();
+} 
 
 $rechercheUser = Database::Select('evaluation', 'username = ?', [$username]);
 
